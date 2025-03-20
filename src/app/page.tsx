@@ -1,22 +1,27 @@
 // src/app/page.tsx
-"use client";
-
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import Room from "@/components/Room";
-import { OrbitControls } from "@react-three/drei";
+import Room from '@/components/Room'
 
 export default function Home() {
   return (
-    <main className="w-full h-screen">
-      <Canvas camera={{ position: [0, 5, 10], fov: 45 }}>
-        <Suspense fallback={null}>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <Room />
-          <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
-        </Suspense>
-      </Canvas>
+    <main className="min-h-screen p-8">
+      
+      {/* 3D 뷰어 섹션 */}
+      <section className="mb-8">
+        <Room />
+      </section>
+      
+      {/* 추가 섹션들 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="bg-purple-900 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-2">노드 에디터</h2>
+          <p>React Flow 기반 비주얼 노드 에디터</p>
+        </section>
+        
+        <section className="bg-green-900 p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-2">에셋 관리</h2>
+          <p>3D 모델 및 재질 관리 시스템</p>
+        </section>
+      </div>
     </main>
-  );
+  )
 }
